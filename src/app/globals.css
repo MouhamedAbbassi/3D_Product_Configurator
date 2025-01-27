@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #fff;
+    --background: #edebeb;
     --foreground: #ededed;
   }
 }
@@ -28,7 +28,7 @@ body {
   position: relative;
   z-index: 1;
 }
- 
+
 .shadow-3d::before {
   content: "";
   position: absolute;

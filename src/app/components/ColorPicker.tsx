@@ -8,8 +8,7 @@ interface ColorPickerProps {
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ color, onColorChange }) => {
   return (
-    <div className="flex items-center mr-10">
-      <span className="text-white text-sm sm:text-base">Color:</span>
+    <div className="flex items-center ml-12 sm:flex mr-12">
       <input
         type="color"
         value={color}

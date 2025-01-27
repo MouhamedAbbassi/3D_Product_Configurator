@@ -38,7 +38,7 @@ const Scene = () => {
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.shadowMap.enabled = true; // Enable shadow maps
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xffffff); // White background
+    renderer.setClearColor(0xedebeb); // White background
 
     // Create a scene and camera
     const scene = new THREE.Scene();
