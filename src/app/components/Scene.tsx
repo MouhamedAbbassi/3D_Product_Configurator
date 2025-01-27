@@ -57,7 +57,7 @@ const Scene = () => {
 
     // Add a shadow plane
     const planeGeometry = new THREE.PlaneGeometry(100, 100);
-    const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
+    const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.2 });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.rotation.x = -Math.PI / 2;
     plane.position.y = -15;
@@ -197,7 +197,7 @@ const Scene = () => {
   }, [shape, color]);
 
   return (
-    <div className="relative w-full  flex items-center mt-14 ">
+    <div className="relative w-full  flex items-center mt-14 pb-20 ">
       {/* Container for the 3D scene */}
       <div ref={mountRef} className="absolute w-full flex items-center mt-80 "></div>
 
