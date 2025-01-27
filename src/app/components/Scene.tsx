@@ -18,7 +18,7 @@ const Scene = () => {
   const [color, setColor] = useState<string>('#000'); // Default color black
 
   // Utility function to debounce frequent calls (e.g., color change).
-  const debounce = <T extends (...args: any[]) => void>(func: T, delay: number) => {
+  const debounce = <T extends (...args: string[]) => void>(func: T, delay: number) => {
     let timeout: ReturnType<typeof setTimeout>;
     return (...args: Parameters<T>): void => {
       clearTimeout(timeout);

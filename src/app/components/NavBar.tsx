@@ -7,7 +7,7 @@ const navItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "Profile", href: "https://abbassi-mouhamed.web.app", icon: User },
   { name: "Contact", href: "mailto:mouhamed.abbassi@esprit.tn?subject=Contact%20from%20Website", icon: Mail },
-  { name: "About", href: "https://github.com/mouhamedabbassi", icon: Info },
+  { name: "About", href: "https://github.com/MouhamedAbbassi/3D_Product_Configurator", icon: Info },
 ] 
 
 export default function Navbar() {
