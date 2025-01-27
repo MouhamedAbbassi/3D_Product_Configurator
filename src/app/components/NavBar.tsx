@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Github, Mail, User } from "lucide-react";
 
 const navItems = [
-  { name: "Profile", href: "https://abbassi-mouhamed.web.app", icon: User },
+  { name: "Profile", href: "https://abbassi-mouhamed.vercel.app", icon: User },
   { name: "Contact", href: "mailto:mouhamed.abbassi@esprit.tn?subject=Contact%20from%20Website", icon: Mail },
   { name: "Github", href: "https://github.com/MouhamedAbbassi/3D_Product_Configurator", icon: Github },
 ];
