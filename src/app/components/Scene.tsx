@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import ColorPicker from './ColorPicker';
 import ShapeDropdown from './ShapeDropdown';
+import { mashroomLogo } from '../../../public/imagePaths'; // Ensure the path to your image is correct
 
 /**
  * Scene component renders a 3D interactive scene using Three.js.
@@ -16,8 +17,8 @@ const Scene = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   // State to control the shape type and color.
-  const [shape, setShape] = useState<'CUBE' | 'SPHERE' | 'HEART' | 'CYLINDER' | 'CONE'>('HEART');
-  const [color, setColor] = useState<string>('#000'); // Default color black
+  const [shape, setShape] = useState<'CUBE' | 'SPHERE' | 'HEART' | 'CYLINDER' | 'CONE'>('SPHERE');
+  const [color, setColor] = useState<string>('#FFF'); // Default color black
 
   // Utility function to debounce frequent calls (e.g., color change).
   const debounce = <T extends (...args: string[]) => void>(func: T, delay: number) => {
@@ -66,20 +67,27 @@ const Scene = () => {
     plane.receiveShadow = true;
     scene.add(plane);
 
+    // Load texture
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load(mashroomLogo); // Replace with your image path
+
     // Geometry and material for the shape
     let geometry: THREE.BufferGeometry;
-    const material = new THREE.MeshStandardMaterial({ color: new THREE.Color(color) });
+    let material: THREE.Material;
 
     // Create the shape based on the selected type
     switch (shape) {
       case 'SPHERE':
         geometry = new THREE.SphereGeometry(5, 32, 16);
+        material = new THREE.MeshStandardMaterial({ map: texture, color: new THREE.Color(color) });
         break;
       case 'CYLINDER':
         geometry = new THREE.CylinderGeometry(4, 4, 10, 32);
+        material = new THREE.MeshStandardMaterial({ color: new THREE.Color(color) });
         break;
       case 'CONE':
         geometry = new THREE.ConeGeometry(5, 10, 14);
+        material = new THREE.MeshStandardMaterial({ color: new THREE.Color(color) });
         break;
       case 'HEART':
         // Heart shape creation
@@ -105,11 +113,13 @@ const Scene = () => {
 
         // Create the extruded geometry for the heart shape
         geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+        material = new THREE.MeshStandardMaterial({ color: new THREE.Color(color) });
         break;
 
       case 'CUBE':
       default:
         geometry = new THREE.BoxGeometry(8, 8, 8);
+        material = new THREE.MeshStandardMaterial({ color: new THREE.Color(color) });
     }
 
     // Adjust shape position and shadow settings
