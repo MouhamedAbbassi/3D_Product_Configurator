@@ -19,7 +19,6 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
-  overflow-y: hidden;
   margin: 0;
   padding: 0;
 }
@@ -29,7 +28,7 @@ body {
   position: relative;
   z-index: 1;
 }
-
+ 
 .shadow-3d::before {
   content: "";
   position: absolute;
