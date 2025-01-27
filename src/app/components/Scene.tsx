@@ -171,7 +171,7 @@ const Scene = () => {
   }, [shape, color]);
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-screen mr-10">
       {/* Container for the 3D scene */}
       <div ref={mountRef} className="absolute w-full h-full "></div>
 

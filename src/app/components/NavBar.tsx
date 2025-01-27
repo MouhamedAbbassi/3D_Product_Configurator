@@ -1,18 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { Home, Info, Mail, User } from "lucide-react"
+import { Github, Mail, User } from "lucide-react"
 
 const navItems = [
-  { name: "Home", href: "/", icon: Home },
   { name: "Profile", href: "https://abbassi-mouhamed.web.app", icon: User },
   { name: "Contact", href: "mailto:mouhamed.abbassi@esprit.tn?subject=Contact%20from%20Website", icon: Mail },
-  { name: "About", href: "https://github.com/MouhamedAbbassi/3D_Product_Configurator", icon: Info },
+  { name: "About", href: "https://github.com/MouhamedAbbassi/3D_Product_Configurator", icon: Github },
 ] 
 
 export default function Navbar() {
   return (
-    <nav className="bg-white shadow-3d mb-5 fixed-navbar">
+    <nav className="bg-white shadow-3d mb-5 fixed-navbar rounded-md mt-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center h-16">
           <Link href="/" className="text-2xl font-bold text-gray-800">
