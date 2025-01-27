@@ -1,5 +1,5 @@
 # 3D Product Configurator
-
+Live demo: https://3-d-product-configurator-scene.vercel.app
 This project is an interactive 3D Product Configurator scene built using **Next.js**, **TypeScript**, and **Three.js**, styled with **Tailwind CSS**. The app allows users to interact with 3D shapes such as cubes, spheres, cylinders, and cones, customize their colors, and rotate them interactively with mouse cursor. The project demonstrates the power of modern web technologies to create engaging and dynamic user experiences.
 
 ## Table of Contents

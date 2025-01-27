@@ -43,4 +43,11 @@ body {
 .fixed-navbar {
   position: fixed;
   z-index: 50;
+  width: 50%;
+}
+@media (max-width: 768px) {
+  .fixed-navbar {
+    position: flex-centered; 
+    width: 100%; /* Ensure full width on mobile devices */
+  }
 }
