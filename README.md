@@ -1,17 +1,16 @@
-# 3D Scene Interactive App
+# 3D Product Configurator
 
 This project is an interactive 3D Product Configurator scene built using **Next.js**, **TypeScript**, and **Three.js**, styled with **Tailwind CSS**. The app allows users to interact with 3D shapes such as cubes, spheres, cylinders, and cones, customize their colors, and rotate them interactively with mouse cursor. The project demonstrates the power of modern web technologies to create engaging and dynamic user experiences.
 
 ## Table of Contents
 
-- [3D Scene Interactive App](#3d-scene-interactive-app)
+- [3D Product Configurator](#3d-product-configurator)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Technologies Used](#technologies-used)
   - [Project Structure](#project-structure)
     - [File Descriptions](#file-descriptions)
   - [Installation](#installation)
-  - [Acknowledgments](#acknowledgments)
 
 ## Features
 
@@ -32,14 +31,7 @@ This project is an interactive 3D Product Configurator scene built using **Next.
 
 The project follows a clean and organized structure, with the majority of the code inside the `src/` directory, following the standard Next.js conventions.
 
-src/
-  ├── app/
-  │   ├── components/
-  │   │   ├── Navbar.tsx        # Navigation bar component for more information
-  │   │   └── Scene.tsx         # Main 3D scene component powered by Three.js
-  │   ├── page.tsx              # Main page that includes the Navbar and Scene components
-  │   └── globals.css           # Global CSS file for styling the app
-tsconfig.json                   # TypeScript configuration file
+src/ ├── app/ │ ├── components/ │ │ ├── Navbar.tsx # Navigation bar component for more information │ │ └── Scene.tsx # Main 3D scene component powered by Three.js │ ├── page.tsx # Main page that includes the Navbar and Scene components │ └── globals.css # Global CSS file for styling the app ├── tsconfig.json # TypeScript configuration file
 
 ### File Descriptions
 
@@ -88,10 +80,4 @@ Follow the Prettier configuration for formatting.
 Ensure all functions and components are well-documented.
 License
 This project is licensed under the MIT License. See the LICENSE file for more information.
-
-## Acknowledgments
-
-- **Next.js**: For being an excellent React framework for **Server-Side Rendering (SSR)** and **Static Site Generation (SSG)**.
-- **Three.js**: For making it easy to render 3D graphics in the browser.
-- **Tailwind CSS**: For simplifying the styling process with its utility-first approach.
-- **TypeScript**: For providing type-safety and improving the development experience with better tooling and code quality.
+ 
