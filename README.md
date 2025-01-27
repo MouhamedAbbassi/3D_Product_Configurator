@@ -31,7 +31,14 @@ This project is an interactive 3D Product Configurator scene built using **Next.
 
 The project follows a clean and organized structure, with the majority of the code inside the `src/` directory, following the standard Next.js conventions.
 
-src/ ├── app/ │ ├── components/ │ │ ├── Navbar.tsx # Navigation bar component for project details │ │ └── Scene.tsx # Main 3D scene component powered by Three.js │ ├── page.tsx # Main page that includes Navbar and Scene components │ └── globals.css # Global CSS file for styling the app ├── tsconfig.json # TypeScript configuration file
+src/
+  ├── app/
+  │   ├── components/
+  │   │   ├── Navbar.tsx        # Navigation bar component for more information
+  │   │   └── Scene.tsx         # Main 3D scene component powered by Three.js
+  │   ├── page.tsx              # Main page that includes the Navbar and Scene components
+  │   └── globals.css           # Global CSS file for styling the app
+tsconfig.json
 
 ### File Descriptions
 
