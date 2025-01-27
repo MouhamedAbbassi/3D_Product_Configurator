@@ -2,6 +2,8 @@
 
 import { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
+import ColorPicker from './ColorPicker';
+import ShapeDropdown from './ShapeDropdown';
 
 /**
  * Scene component renders a 3D interactive scene using Three.js.
@@ -14,7 +16,7 @@ const Scene = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   // State to control the shape type and color.
-  const [shape, setShape] = useState<'CUBE' | 'SPHERE' | 'HEART' | 'CYLINDER' | 'CONE'>('CONE');
+  const [shape, setShape] = useState<'CUBE' | 'SPHERE' | 'HEART' | 'CYLINDER' | 'CONE'>('HEART');
   const [color, setColor] = useState<string>('#000'); // Default color black
 
   // Utility function to debounce frequent calls (e.g., color change).
@@ -56,7 +58,7 @@ const Scene = () => {
     scene.add(light);
 
     // Add a shadow plane
-    const planeGeometry = new THREE.PlaneGeometry(100, 100);
+    const planeGeometry = new THREE.PlaneGeometry(200, 200);
     const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.2 });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.rotation.x = -Math.PI / 2;
@@ -79,32 +81,32 @@ const Scene = () => {
       case 'CONE':
         geometry = new THREE.ConeGeometry(5, 10, 14);
         break;
-        case 'HEART':
-            // Heart shape creation
-            const x = 0, y = 0;
-            const scaleFactor = 0.5; // Scale factor to reduce the size
-          
-            const heartShape = new THREE.Shape();
-            heartShape.moveTo(x + 5 * scaleFactor, y + 5 * scaleFactor);
-            heartShape.bezierCurveTo(x + 5 * scaleFactor, y + 5 * scaleFactor, x + 4 * scaleFactor, y, x, y);
-            heartShape.bezierCurveTo(x - 6 * scaleFactor, y, x - 6 * scaleFactor, y + 7 * scaleFactor, x - 6 * scaleFactor, y + 7 * scaleFactor);
-            heartShape.bezierCurveTo(x - 6 * scaleFactor, y + 11 * scaleFactor, x - 3 * scaleFactor, y + 15.4 * scaleFactor, x + 5 * scaleFactor, y + 19 * scaleFactor);
-            heartShape.bezierCurveTo(x + 12 * scaleFactor, y + 15.4 * scaleFactor, x + 16 * scaleFactor, y + 11 * scaleFactor, x + 16 * scaleFactor, y + 7 * scaleFactor);
-            heartShape.bezierCurveTo(x + 16 * scaleFactor, y + 7 * scaleFactor, x + 16 * scaleFactor, y, x + 10 * scaleFactor, y);
-            heartShape.bezierCurveTo(x + 7 * scaleFactor, y, x + 5 * scaleFactor, y + 5 * scaleFactor, x + 5 * scaleFactor, y + 5 * scaleFactor);
-          
-            // Define extrude settings (e.g., depth and bevel)
-            const extrudeSettings = {
-              depth: 2 * scaleFactor, // Thickness of the heart
-              bevelEnabled: true,     // Enable bevel for rounded edges
-              bevelThickness: 0.5 * scaleFactor,  // Thickness of the bevel
-              bevelSize: 1 * scaleFactor,        // Size of the bevel
-            };
-          
-            // Create the extruded geometry for the heart shape
-            geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
-            break;
-          
+      case 'HEART':
+        // Heart shape creation
+        const x = 0, y = 0;
+        const scaleFactor = 0.5; // Scale factor to reduce the size
+
+        const heartShape = new THREE.Shape();
+        heartShape.moveTo(x + 5 * scaleFactor, y + 5 * scaleFactor);
+        heartShape.bezierCurveTo(x + 5 * scaleFactor, y + 5 * scaleFactor, x + 4 * scaleFactor, y, x, y);
+        heartShape.bezierCurveTo(x - 6 * scaleFactor, y, x - 6 * scaleFactor, y + 7 * scaleFactor, x - 6 * scaleFactor, y + 7 * scaleFactor);
+        heartShape.bezierCurveTo(x - 6 * scaleFactor, y + 11 * scaleFactor, x - 3 * scaleFactor, y + 15.4 * scaleFactor, x + 5 * scaleFactor, y + 19 * scaleFactor);
+        heartShape.bezierCurveTo(x + 12 * scaleFactor, y + 15.4 * scaleFactor, x + 16 * scaleFactor, y + 11 * scaleFactor, x + 16 * scaleFactor, y + 7 * scaleFactor);
+        heartShape.bezierCurveTo(x + 16 * scaleFactor, y + 7 * scaleFactor, x + 16 * scaleFactor, y, x + 10 * scaleFactor, y);
+        heartShape.bezierCurveTo(x + 7 * scaleFactor, y, x + 5 * scaleFactor, y + 5 * scaleFactor, x + 5 * scaleFactor, y + 5 * scaleFactor);
+
+        // Define extrude settings (e.g., depth and bevel)
+        const extrudeSettings = {
+          depth: 2 * scaleFactor, // Thickness of the heart
+          bevelEnabled: true,     // Enable bevel for rounded edges
+          bevelThickness: 0.5 * scaleFactor,  // Thickness of the bevel
+          bevelSize: 1 * scaleFactor,        // Size of the bevel
+        };
+
+        // Create the extruded geometry for the heart shape
+        geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+        break;
+
       case 'CUBE':
       default:
         geometry = new THREE.BoxGeometry(8, 8, 8);
@@ -197,41 +199,14 @@ const Scene = () => {
   }, [shape, color]);
 
   return (
-    <div className="relative w-full  flex items-center mt-14 pb-20 ">
+    <div className="relative w-full flex items-center mt-14 pb-20">
       {/* Container for the 3D scene */}
-      <div ref={mountRef} className="absolute w-full flex items-center mt-80 "></div>
+      <div ref={mountRef} className="absolute w-full flex items-center mt-80"></div>
 
       {/* Controls for shape and color */}
-      <div className="absolute flex flex-col sm:flex-row items-center justify-center w-full sm:gap-0 z-10 mt-44  ">
-        {/* Color picker */}
-        <div className="flex items-center mr-10">
-          <span className="text-white text-sm sm:text-base">Color:</span>
-          <input
-            type="color"
-            value={color}
-            onChange={(e) => handleColorChange(e.target.value)}
-            className="w-20 h-10 sm:w-24 sm:h-10 rounded-md cursor-pointer border-2 border-gray-400 focus:outline-none transition-transform transform hover:scale-110"
-            style={{
-              backgroundColor: color,
-              boxShadow: `0 0 10px ${color}`,
-            }}
-          />
-        </div>
-
-        {/* Shape selection dropdown */}
-        <div className="flex items-center mr-10">
-          <select
-            value={shape}
-            onChange={(e) => setShape(e.target.value as 'CUBE' | 'SPHERE' | 'CYLINDER' | 'CONE' | 'HEART')}
-            className="p-2 bg-black text-gray-300 rounded-md cursor-pointer border-2 border-gray-300 focus:outline-none transition-transform transform hover:scale-110 shadow-md w-full sm:w-auto ml-12 m-2"
-          >
-            <option value="CUBE">Cube</option>
-            <option value="SPHERE">Sphere</option>
-            <option value="CYLINDER">Cylinder</option>
-            <option value="CONE">Cone</option>
-            <option value="HEART">Heart</option> {/* Added heart option */}
-          </select>
-        </div>
+      <div className="absolute flex flex-col sm:flex-row items-center justify-center w-full sm:gap-0 z-10 mt-44">
+        <ColorPicker color={color} onColorChange={handleColorChange} />
+        <ShapeDropdown shape={shape} onShapeChange={setShape} />
       </div>
     </div>
   );

@@ -34,11 +34,14 @@ The project follows a clean and organized structure, with the majority of the co
 src/
   ├── app/
   │   ├── components/
-  │   │   ├── Navbar.tsx        # Navigation bar component for more information
-  │   │   └── Scene.tsx         # Main 3D scene component powered by Three.js
-  │   ├── page.tsx              # Main page that includes the Navbar and Scene components
-  │   └── globals.css           # Global CSS file for styling the app
-tsconfig.json
+  │   │   ├── Navbar.tsx         # Navigation bar component
+  │   │   ├── Footer.tsx         # Footer component
+  │   │   ├── ColorPicker.tsx    # Component for selecting color
+  │   │   ├── ShapeDropdown.tsx  # Component for selecting shape
+  │   │   └── scene.tsx          # Main 3D scene component
+  │   ├── page.tsx               # Main page that includes the Navbar and Scene components
+  │   └── globals.css            # Global CSS file for styling the app
+tsconfig.json                     # TypeScript configuration file
 
 ### File Descriptions
 
