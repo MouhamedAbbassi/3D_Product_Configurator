@@ -18,7 +18,7 @@ const Scene = () => {
 
   // State to control the shape type and color.
   const [shape, setShape] = useState<'CUBE' | 'SPHERE' | 'HEART' | 'CYLINDER' | 'CONE'>('SPHERE');
-  const [color, setColor] = useState<string>('#FFF'); // Default color black
+  const [color, setColor] = useState<string>('#fff'); // Default color black
 
   // Utility function to debounce frequent calls (e.g., color change).
   const debounce = <T extends (...args: string[]) => void>(func: T, delay: number) => {
