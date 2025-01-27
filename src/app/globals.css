@@ -48,6 +48,6 @@ body {
 @media (max-width: 768px) {
   .fixed-navbar {
     position: flex-centered; 
-    width: 100%; /* Ensure full width on mobile devices */
+    width: 90%; /* Ensure full width on mobile devices */
   }
 }
