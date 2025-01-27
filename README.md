@@ -68,7 +68,7 @@ Open your browser and navigate to http://localhost:3000 to view the app.
 
 Usage
 Interacting with the 3D Scene: You can click and drag the 3D shapes to rotate them in space. This provides an interactive experience where users can explore the objects from all angles.
-Changing Shapes: Use the shape selector to switch between Cube, Sphere, Cylinder, and Cone. The selected shape will be rendered in the scene.
+Changing Shapes: Use the shape selector to switch between Cube, Sphere, Cylinder, Cone, and Heart. The selected shape will be rendered in the scene.
 Changing Colors: Use the color picker to update the color of the selected shape in real-time.
 Responsive Design: The app is fully responsive and adjusts to different screen sizes, providing a seamless experience across devices.
 

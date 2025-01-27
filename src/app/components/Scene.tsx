@@ -60,7 +60,7 @@ const Scene = () => {
     const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.3 });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
     plane.rotation.x = -Math.PI / 2;
-    plane.position.y = -10;
+    plane.position.y = -15;
     plane.receiveShadow = true;
     scene.add(plane);
 
@@ -77,7 +77,7 @@ const Scene = () => {
         geometry = new THREE.CylinderGeometry(4, 4, 10, 32);
         break;
       case 'CONE':
-        geometry = new THREE.ConeGeometry(5, 10, 16);
+        geometry = new THREE.ConeGeometry(5, 10, 14);
         break;
         case 'HEART':
             // Heart shape creation
@@ -197,14 +197,14 @@ const Scene = () => {
   }, [shape, color]);
 
   return (
-    <div className="relative w-full h-screen mr-10">
+    <div className="relative w-full  flex items-center mt-14 ">
       {/* Container for the 3D scene */}
-      <div ref={mountRef} className="absolute w-full h-full "></div>
+      <div ref={mountRef} className="absolute w-full flex items-center mt-80 "></div>
 
       {/* Controls for shape and color */}
-      <div className="absolute flex flex-col sm:flex-row items-center justify-center w-full sm:gap-0 z-10 mt-44 ">
+      <div className="absolute flex flex-col sm:flex-row items-center justify-center w-full sm:gap-0 z-10 mt-44  ">
         {/* Color picker */}
-        <div className="flex items-center">
+        <div className="flex items-center mr-10">
           <span className="text-white text-sm sm:text-base">Color:</span>
           <input
             type="color"
@@ -219,7 +219,7 @@ const Scene = () => {
         </div>
 
         {/* Shape selection dropdown */}
-        <div className="flex items-center">
+        <div className="flex items-center mr-10">
           <select
             value={shape}
             onChange={(e) => setShape(e.target.value as 'CUBE' | 'SPHERE' | 'CYLINDER' | 'CONE' | 'HEART')}
