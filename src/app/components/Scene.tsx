@@ -6,7 +6,7 @@ import * as THREE from 'three';
 /**
  * Scene component renders a 3D interactive scene using Three.js.
  * Users can:
- *  - Choose between different shapes (Cube, Sphere, Cylinder, Cone).
+ *  - Choose between different shapes (Cube, Sphere, Cylinder, Cone, Heart).
  *  - Change the color of the shape.
  *  - Rotate the shape interactively with mouse drag.
  */
@@ -14,7 +14,7 @@ const Scene = () => {
   const mountRef = useRef<HTMLDivElement>(null);
 
   // State to control the shape type and color.
-  const [shape, setShape] = useState<'CUBE' | 'SPHERE' | 'CYLINDER' | 'CONE'>('CUBE');
+  const [shape, setShape] = useState<'CUBE' | 'SPHERE' | 'HEART' | 'CYLINDER' | 'CONE'>('CONE');
   const [color, setColor] = useState<string>('#000'); // Default color black
 
   // Utility function to debounce frequent calls (e.g., color change).
@@ -79,6 +79,32 @@ const Scene = () => {
       case 'CONE':
         geometry = new THREE.ConeGeometry(5, 10, 16);
         break;
+        case 'HEART':
+            // Heart shape creation
+            const x = 0, y = 0;
+            const scaleFactor = 0.5; // Scale factor to reduce the size
+          
+            const heartShape = new THREE.Shape();
+            heartShape.moveTo(x + 5 * scaleFactor, y + 5 * scaleFactor);
+            heartShape.bezierCurveTo(x + 5 * scaleFactor, y + 5 * scaleFactor, x + 4 * scaleFactor, y, x, y);
+            heartShape.bezierCurveTo(x - 6 * scaleFactor, y, x - 6 * scaleFactor, y + 7 * scaleFactor, x - 6 * scaleFactor, y + 7 * scaleFactor);
+            heartShape.bezierCurveTo(x - 6 * scaleFactor, y + 11 * scaleFactor, x - 3 * scaleFactor, y + 15.4 * scaleFactor, x + 5 * scaleFactor, y + 19 * scaleFactor);
+            heartShape.bezierCurveTo(x + 12 * scaleFactor, y + 15.4 * scaleFactor, x + 16 * scaleFactor, y + 11 * scaleFactor, x + 16 * scaleFactor, y + 7 * scaleFactor);
+            heartShape.bezierCurveTo(x + 16 * scaleFactor, y + 7 * scaleFactor, x + 16 * scaleFactor, y, x + 10 * scaleFactor, y);
+            heartShape.bezierCurveTo(x + 7 * scaleFactor, y, x + 5 * scaleFactor, y + 5 * scaleFactor, x + 5 * scaleFactor, y + 5 * scaleFactor);
+          
+            // Define extrude settings (e.g., depth and bevel)
+            const extrudeSettings = {
+              depth: 2 * scaleFactor, // Thickness of the heart
+              bevelEnabled: true,     // Enable bevel for rounded edges
+              bevelThickness: 0.5 * scaleFactor,  // Thickness of the bevel
+              bevelSize: 1 * scaleFactor,        // Size of the bevel
+            };
+          
+            // Create the extruded geometry for the heart shape
+            geometry = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+            break;
+          
       case 'CUBE':
       default:
         geometry = new THREE.BoxGeometry(8, 8, 8);
@@ -196,13 +222,14 @@ const Scene = () => {
         <div className="flex items-center">
           <select
             value={shape}
-            onChange={(e) => setShape(e.target.value as 'CUBE' | 'SPHERE' | 'CYLINDER' | 'CONE')}
+            onChange={(e) => setShape(e.target.value as 'CUBE' | 'SPHERE' | 'CYLINDER' | 'CONE' | 'HEART')}
             className="p-2 bg-black text-gray-300 rounded-md cursor-pointer border-2 border-gray-300 focus:outline-none transition-transform transform hover:scale-110 shadow-md w-full sm:w-auto ml-12 m-2"
           >
             <option value="CUBE">Cube</option>
             <option value="SPHERE">Sphere</option>
             <option value="CYLINDER">Cylinder</option>
             <option value="CONE">Cone</option>
+            <option value="HEART">Heart</option> {/* Added heart option */}
           </select>
         </div>
       </div>
