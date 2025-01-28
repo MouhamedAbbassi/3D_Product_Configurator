@@ -46,10 +46,13 @@ tsconfig.json                     # TypeScript configuration file
 ```
 ### File Descriptions
 
-- **`src/app/components/Navbar.tsx`**: A simple navigation bar that may contain links and project details.
+- **`src/app/components/Navbar.tsx`**: A simple navigation bar that contain links and project details.
+- **`src/app/components/Footer.tsx`**: A simple footer that contain link and project creator.
 - **`src/app/components/Scene.tsx`**: The core component where the 3D scene is created and rendered using Three.js.
+- **`src/app/components/ColorPicker.tsx`**: The component where the colorpicker button to choose a shape color.
+- **`src/app/components/ShapeDropdown.tsx`**: The core component where the dropdown button to change the shape.
 - **`src/app/page.tsx`**: The main page that imports and renders both the Navbar and Scene components.
-- **`src/public/`**: (Optional) Folder for any public assets like images or textures.
+- **`src/public/`**: Folder for any public assets like images or textures.
 - **`src/styles/globals.css`**: Global CSS file that is imported into the app for styling.
 - **`tsconfig.json`**: TypeScript configuration for the project.
 
